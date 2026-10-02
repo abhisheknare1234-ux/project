@@ -1,0 +1,97 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Manrope", system-ui, sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sand: var(--sand);
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
+  --color-overlay: var(--overlay);
+}
+
+:root {
+  --radius: 1rem;
+  --background: oklch(0.985 0.008 85);
+  --foreground: oklch(0.22 0.02 200);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.02 200);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.02 200);
+  --primary: oklch(0.42 0.08 190);
+  --primary-foreground: oklch(0.98 0.01 85);
+  --secondary: oklch(0.95 0.02 170);
+  --secondary-foreground: oklch(0.3 0.06 190);
+  --muted: oklch(0.955 0.012 85);
+  --muted-foreground: oklch(0.47 0.02 200);
+  --accent: oklch(0.72 0.13 60);
+  --accent-foreground: oklch(0.22 0.03 60);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.9 0.015 85);
+  --input: oklch(0.88 0.015 85);
+  --ring: oklch(0.55 0.09 190);
+  --sand: oklch(0.93 0.03 80);
+  --ink: oklch(0.24 0.035 200);
+  --ink-foreground: oklch(0.96 0.01 85);
+  --overlay: oklch(0.15 0.02 220);
+  --shadow-soft: 0 1px 2px oklch(0.2 0.02 200 / 6%), 0 12px 32px -12px oklch(0.2 0.02 200 / 18%);
+  --shadow-lift: 0 2px 4px oklch(0.2 0.02 200 / 8%), 0 24px 48px -16px oklch(0.2 0.02 200 / 28%);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.015em; }
+  :focus-visible { outline: 2px solid var(--color-ring); outline-offset: 3px; border-radius: 6px; }
+}
+
+@utility shadow-soft { box-shadow: var(--shadow-soft); }
+@utility shadow-lift { box-shadow: var(--shadow-lift); }
+@utility container-wide { width: 100%; max-width: 80rem; margin-inline: auto; padding-inline: 1.25rem; @media (min-width: 768px) { padding-inline: 2rem; } }
+@utility eyebrow { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-primary); }
+@utility hero-overlay { background: linear-gradient(180deg, oklch(0.15 0.02 220 / 35%) 0%, oklch(0.15 0.02 220 / 25%) 40%, oklch(0.15 0.02 220 / 75%) 100%); }
+@utility card-overlay { background: linear-gradient(180deg, transparent 35%, oklch(0.15 0.02 220 / 85%) 100%); }
+@utility fade-up { animation: fade-up 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+@keyframes fade-up { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+.prose-article p { margin: 0 0 1.15rem; line-height: 1.8; font-size: 1.075rem; color: var(--color-foreground); }
+.prose-article h2 { font-size: 1.75rem; font-weight: 600; margin: 2.5rem 0 1rem; scroll-margin-top: 6rem; }
+.prose-article ul { margin: 0 0 1.25rem; padding-left: 1.25rem; list-style: disc; }
+.prose-article li { margin-bottom: 0.5rem; line-height: 1.7; }
